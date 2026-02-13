@@ -2,88 +2,168 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Be My Valentine ❤️</title>
+<title>For You ❤️</title>
 
 <style>
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+    margin:0;
+    font-family: Arial;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     color: white;
+    text-align: center;
+    overflow: hidden;
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    width: 350px;
+.box {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+input {
+    padding:10px;
+    border:none;
+    border-radius:10px;
 }
 
 button {
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    margin: 10px;
-    transition: 0.3s;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    margin:10px;
+    cursor:pointer;
 }
 
-#yesBtn {
-    background: white;
-    color: #ff4d6d;
-    font-weight: bold;
+#main, #slideshow {
+    display:none;
 }
 
-#noBtn {
-    background: #ff4d6d;
-    color: white;
-    position: absolute;
+img {
+    border-radius:15px;
 }
 
-#message {
-    margin-top: 20px;
-    font-size: 20px;
-    display: none;
+/* slideshow image */
+#slide {
+    width:300px;
+    height:400px;
+    object-fit:cover;
+}
+
+/* cat */
+#cat {
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    width:120px;
+}
+
+/* hearts */
+.heart {
+    position:absolute;
+    color:red;
+    font-size:20px;
+    animation: float 3s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(0);}
+    to {transform: translateY(-800px);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>Hey Beautiful 💕</h1>
-    <p>Will you be my Valentine? 🌹</p>
+<!-- PASSWORD PAGE -->
+<div id="login" class="box">
+    <h2>Enter Password 💌</h2>
+    <input type="password" id="code">
+    <br>
+    <button onclick="check()">Enter</button>
+    <p id="wrong"></p>
+</div>
 
-    <button id="yesBtn">YES 💖</button>
-    <button id="noBtn">No 🙈</button>
+<!-- SLIDESHOW -->
+<div id="slideshow" class="box">
+    <h2>Our Memories 💕</h2>
+    <img id="slide" src="pic1.jpg">
+</div>
 
-    <div id="message">LET'S GOOOO ❤️ I can't wait to spoil you 🥰</div>
+<!-- MAIN QUESTION -->
+<div id="main" class="box">
+    <h1>Do you wanna be my Valentine? 💖</h1>
+
+    <button onclick="yes()">YES 💕</button>
+    <button id="no">No 🙈</button>
+
+    <p id="msg"></p>
+
+    <img id="cat" src="https://media.tenor.com/m6z7J6jv2k0AAAAC/cute-cat.gif">
 </div>
 
 <script>
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
-const message = document.getElementById("message");
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+// PASSWORD
+function check() {
+    let code = document.getElementById("code").value;
+
+    if(code === "ronisbutt") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("slideshow").style.display = "block";
+        startSlideshow();
+    } else {
+        document.getElementById("wrong").innerText = "Wrong password 😢";
+    }
+}
+
+// SLIDESHOW
+let images = ["pic1.jpg","pic2.jpg","pic3.jpg","pic4.jpg","pic5.jpg","pic6.jpg"];
+let i = 0;
+
+function startSlideshow() {
+    let slide = document.getElementById("slide");
+
+    let interval = setInterval(() => {
+        i++;
+        if(i >= images.length) {
+            clearInterval(interval);
+            document.getElementById("slideshow").style.display = "none";
+            document.getElementById("main").style.display = "block";
+        } else {
+            slide.src = images[i];
+        }
+    }, 2000);
+}
+
+// NO BUTTON MOVES
+let no = document.getElementById("no");
+
+no.addEventListener("mouseover", () => {
+    no.style.position = "absolute";
+    no.style.left = Math.random()*window.innerWidth + "px";
+    no.style.top = Math.random()*window.innerHeight + "px";
 });
 
-yesBtn.addEventListener("click", () => {
-    message.style.display = "block";
-});
+// YES BUTTON
+function yes() {
+    document.getElementById("msg").innerText = "YAYYYYY I LOVE YOU ❤️";
+
+    // hearts animation
+    for(let i=0;i<30;i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.top = "100vh";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 3000);
+    }
+}
+
 </script>
 
 </body>
