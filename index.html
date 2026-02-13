@@ -61,7 +61,7 @@ button {
     font-weight: bold;
     transition: 0.3s;
     background: white;
-    color: black; /* FIXED: button text is black */
+    color: black;
 }
 
 button:hover {
@@ -182,13 +182,18 @@ function startSlideshow() {
     }, 2000);
 }
 
-// NO BUTTON MOVES
+// NO BUTTON — 8 hover rule
 let no = document.getElementById("no");
+let noHoverCount = 0;
 
 no.addEventListener("mouseover", () => {
-    no.style.position = "absolute";
-    no.style.left = Math.random() * window.innerWidth + "px";
-    no.style.top = Math.random() * window.innerHeight + "px";
+    noHoverCount++;
+
+    if (noHoverCount >= 8) {
+        no.style.position = "absolute";
+        no.style.left = Math.random() * window.innerWidth + "px";
+        no.style.top = Math.random() * window.innerHeight + "px";
+    }
 });
 
 // YES BUTTON
