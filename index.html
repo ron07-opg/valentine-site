@@ -11,7 +11,7 @@ body {
     background: linear-gradient(-45deg, #ff9a9e, #ffb6c1, #ffc3a0, #ff758c);
     background-size: 400% 400%;
     animation: gradientBG 12s ease infinite;
-    color: pink;
+    color: white; /* readable text */
     text-align: center;
     overflow: hidden;
 }
@@ -109,13 +109,13 @@ button:hover {
 </div>
 
 <!-- SLIDESHOW -->
-<div id="slideshow" class="box">
+<div id="slideshow" class="box" style="display:none;">
     <h2>Our Memories 💕</h2>
-    <img id="slide" src="pic1.jpg">
+    <img id="slide" src="pic1.jpg.jpeg">
 </div>
 
 <!-- MAIN QUESTION -->
-<div id="main" class="box">
+<div id="main" class="box" style="display:none;">
     <h1>Do you wanna be my Valentine? 💖</h1>
 
     <button onclick="yes()">YES 💕</button>
@@ -141,8 +141,16 @@ function check() {
     }
 }
 
-// SLIDESHOW
-let images = ["pic1.jpg.jpeg","pic2.jpg.jpeg","pic3.jpg.jpeg","pic4.jpg.jpeg","pic5.jpg.jpeg","pic6.jpg.jpeg"];
+// SLIDESHOW — using your REAL filenames
+let images = [
+    "pic1.jpg.jpeg",
+    "pic2.jpg.jpeg",
+    "pic3.jpg.jpeg",
+    "pic4.jpg.jpeg",
+    "pic5.jpg.jpeg",
+    "pic6.jpg.jpeg"
+];
+
 let i = 0;
 
 function startSlideshow() {
