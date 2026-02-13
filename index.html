@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <title>For You ❤️</title>
 
-<style id="freshCSS">
+<style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-background: linear-gradient(-45deg, #ff9a9e, #ffb6c1, #ffc3a0, #ff758c);  
+    background: linear-gradient(-45deg, #ff9a9e, #ffb6c1, #ffc3a0, #ff758c);
     background-color: #ffb6c1 !important;
     background-size: 400% 400%;
     animation: gradientBG 12s ease infinite;
-    color: white; /* FIXED: stays white */
+    color: white;
     text-align: center;
     overflow: hidden;
 }
@@ -37,7 +37,7 @@ background: linear-gradient(-45deg, #ff9a9e, #ffb6c1, #ffc3a0, #ff758c);
     box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
 }
 
-/* hide these by default */
+/* hide slideshow + main at start */
 #slideshow,
 #main {
     display: none;
@@ -60,8 +60,8 @@ button {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-color: #ff4d6d; /* keep this for buttons */    background: white;
-    color:white;
+    background: white;
+    color: black; /* FIXED: button text is black */
 }
 
 button:hover {
@@ -76,10 +76,18 @@ button:hover {
     border-radius: 15px;
 }
 
-/* cat gif */
-#cat {
+/* RIGHT cat gif */
+#catRight {
     position: absolute;
     right: 20px;
+    bottom: 20px;
+    width: 120px;
+}
+
+/* LEFT cat gif */
+#catLeft {
+    position: absolute;
+    left: 20px;
     bottom: 20px;
     width: 120px;
 }
@@ -93,14 +101,8 @@ button:hover {
 
 /* floating hearts animation */
 @keyframes floatUp {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-800px);
-        opacity: 0;
-    }
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
 }
 </style>
 
@@ -132,7 +134,11 @@ button:hover {
 
     <p id="msg"></p>
 
-    <img id="cat" src="https://media.tenor.com/m6z7J6jv2k0AAAAC/cute-cat.gif">
+    <!-- RIGHT GIF -->
+    <img id="catRight" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXBzY3cxcjc2ZHhyYjB2MXhwMHRuMHh0dmtzd3BhYmtlN2ZldnBjciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ZYi6VZaUJzrNiGvJ8T/giphy.gif">
+
+    <!-- LEFT GIF -->
+    <img id="catLeft" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTV4NHJhcGoxbXVweTl3eHFrOTdwdDBub2w0bzNqamgzeGZyY2tqOCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MAl6ITVxHFqdmotPxH/giphy.gif">
 </div>
 
 <script>
