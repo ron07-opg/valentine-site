@@ -198,9 +198,10 @@ no.addEventListener("mouseover", () => {
 
 // YES BUTTON
 function yes() {
-    document.getElementById("msg").innerText = "YESSS I LOVE YOU,YOU BETTER HAVE SAID YES.... ❤️";
+    document.getElementById("msg").innerText = "YESSS I LOVE YOU, YOU BETTER HAVE SAID YES.... ❤️";
 
-    for (let i = 0; i < 30; i++) {
+    // create hearts forever
+    setInterval(() => {
         let heart = document.createElement("div");
         heart.innerHTML = "❤️";
         heart.classList.add("heart");
@@ -211,7 +212,7 @@ function yes() {
         document.body.appendChild(heart);
 
         setTimeout(() => heart.remove(), 3000);
-    }
+    }, 200); // new heart every 0.2 seconds
 }
 
 // FORCE MUSIC TO PLAY AFTER ANY CLICK
