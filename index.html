@@ -110,10 +110,15 @@ button:hover {
 
 <body>
 
+<!-- MUSIC -->
+<audio id="bgMusic" autoplay loop>
+    <source src="YOUR-MP3-LINK-HERE.mp3" type="audio/mpeg">
+</audio>
+
 <!-- PASSWORD PAGE -->
 <div id="login" class="box">
     <h2>Enter Password 💌</h2>
-    <input type="password" id="code">
+    <input type="text" id="code"> <!-- PASSWORD NOW VISIBLE -->
     <br>
     <button onclick="check()">Enter</button>
     <p id="wrong"></p>
@@ -179,7 +184,7 @@ function startSlideshow() {
         } else {
             slide.src = images[i];
         }
-    }, 2000);
+    }, 5000); // 5 SECONDS PER IMAGE
 }
 
 // NO BUTTON — 8 hover rule
