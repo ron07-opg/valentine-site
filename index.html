@@ -112,13 +112,13 @@ button:hover {
 
 <!-- MUSIC -->
 <audio id="bgMusic" autoplay loop>
-    <source src="YOUR-MP3-LINK-HERE.mp3" type="audio/mpeg">
+    <source src="cuento.mp3.mp3" type="audio/mpeg">
 </audio>
 
 <!-- PASSWORD PAGE -->
 <div id="login" class="box">
     <h2>Enter Password 💌</h2>
-    <input type="text" id="code"> <!-- PASSWORD NOW VISIBLE -->
+    <input type="text" id="code">
     <br>
     <button onclick="check()">Enter</button>
     <p id="wrong"></p>
@@ -184,28 +184,22 @@ function startSlideshow() {
         } else {
             slide.src = images[i];
         }
-    }, 5000); // 5 SECONDS PER IMAGE
+    }, 5000);
 }
 
-// NO BUTTON — 8 hover rule
+// NO BUTTON — ORIGINAL RUNAWAY BEHAVIOR
 let no = document.getElementById("no");
-let noHoverCount = 0;
 
 no.addEventListener("mouseover", () => {
-    noHoverCount++;
-
-    if (noHoverCount >= 8) {
-        no.style.position = "absolute";
-        no.style.left = Math.random() * window.innerWidth + "px";
-        no.style.top = Math.random() * window.innerHeight + "px";
-    }
+    no.style.position = "absolute";
+    no.style.left = Math.random() * window.innerWidth + "px";
+    no.style.top = Math.random() * window.innerHeight + "px";
 });
 
 // YES BUTTON
 function yes() {
     document.getElementById("msg").innerText = "YESSS I LOVE YOU, YOU BETTER HAVE SAID YES.... ❤️";
 
-    // hearts animation
     for (let i = 0; i < 30; i++) {
         let heart = document.createElement("div");
         heart.innerHTML = "❤️";
