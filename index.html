@@ -213,6 +213,14 @@ function yes() {
         setTimeout(() => heart.remove(), 3000);
     }
 }
+
+// FORCE MUSIC TO PLAY AFTER ANY CLICK
+document.addEventListener("click", () => {
+    const music = document.getElementById("bgMusic");
+    if (music.paused) {
+        music.play().catch(() => {});
+    }
+});
 </script>
 
 </body>
